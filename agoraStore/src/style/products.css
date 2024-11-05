@@ -1,0 +1,13 @@
+.pagebg {
+    height: 100em;
+    background: url("../img_files/20220818_100551.png");
+    background-size: cover;
+    background-position: 0 80%;
+}
+.product-bg {
+    position: relative;
+    top: 10em;
+    background-color: rgb(254, 254, 254, 0.8);
+    height: 90em;
+    width: 30%;
+}
