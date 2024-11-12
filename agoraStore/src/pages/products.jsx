@@ -20,7 +20,7 @@ function Products() {
                         <h2 className='fw-bold'>All items</h2>
                     </div>
                 </div>
-                <div className='row justify-content-start py-5'>
+                <div className='row d-flex justify-content-between p-5'>
                     <ProductCard />
 
                 </div>

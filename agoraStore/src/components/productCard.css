@@ -1,4 +1,7 @@
 .product-image {
-    width: 40ex;
-    height: 65ex;
+    height: 25em;
+}
+.product-card {
+    width: 20em;
+    height: 25em;
 }

@@ -12,6 +12,8 @@ const ProductCard = () => {
     const mockProducts = [
         { id: 1, name: "Product 1", price: "19.99"},
         { id: 2, name: "Product 2", price: "12.99"},
+        { id: 2, name: "Product 2", price: "12.99"},
+        { id: 2, name: "Product 2", price: "12.99"},
         {/* Add more product objects as needed*/}
     ];
     setProducts(mockProducts);
@@ -32,8 +34,8 @@ console.log(products) //Logs products response for debugging
         <>
             {products.length > 0 ? (  // if product length is greater than 0
                 products.map(product => ( //maps all products as array, in the form of a card.
-                <div key={product.id} className='col-4 d-flex mt-5 justify-content-center'>
-                    <Card className=''>
+                <div key={product.id} className='col-lg-4 col-6 col-sm-12 d-flex p-0 mt-5 justify-content-center'>
+                    <Card className='product-card'>
                         <img className='product-image'src={product.image} 
                              alt={product.alt_text} />
                         <h4 className='fw-bold px-2'>{product.name}</h4>
