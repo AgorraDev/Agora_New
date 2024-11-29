@@ -5,6 +5,8 @@ import '../style/products.css';
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import Footer from '../components/footer.jsx';
+import CartSummary from '../components/cartSummary.jsx';
+
 
 function Products() {
     return (
@@ -18,6 +20,9 @@ function Products() {
                 <div className='row'>
                     <div className='col d-flex justify-content-center mt-5'>
                         <h2 className='fw-bold'>All items</h2>
+                    </div>
+                    <div>
+                        <CartSummary></CartSummary>
                     </div>
                 </div>
                 <div className='row d-flex justify-content-between p-5'>
