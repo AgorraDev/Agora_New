@@ -40,9 +40,7 @@ const ProductCard = ({product}) => {
                 price: parseFloat(product.price),
                 quantity: 1,
             }
-        });
-        console.log('Added to Cart:', product);
-        
+        });        
         console.log('Dispatching:', {
             id: product.id,
             name: product.name,

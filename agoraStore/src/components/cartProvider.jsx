@@ -10,6 +10,7 @@ const cartReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_ITEM': {
             const newItem = action.payload;
+            
             const existingItems = Array.isArray(state.items) ? state.items : [];
             const existingItemIndex = existingItems.findIndex(item => item.id === newItem.id);
 
@@ -30,7 +31,7 @@ const cartReducer = (state, action) => {
 
             return {
                 ...state,
-                item: updatedItems,
+                items: updatedItems,
                 totalQuantity: updatedTotalQuantity,
                 totalPrice: updatedTotalPrice,
             }
@@ -38,10 +39,21 @@ const cartReducer = (state, action) => {
             
         case 'REMOVE_ITEM': {
             const itemId = action.payload;
-            const existingItemIndex = state.items.findIndex(item => item.id === itemId);
-            const existingItem = state.items[existingItemIndex];
+            console.log('Logging new Item',itemId.id);
 
-            const updatedItems = state.items.filter(item => item.id !== itemId);
+            const existingItemIndex = state.items.findIndex(item => item.id === itemId.id);
+            const existingItem = state.items[existingItemIndex];
+            console.log('Current items:', state.items);
+            const updatedItems = state.items.map(item => {
+                if (item.id === itemId.id) {
+                    return {
+                        ...item,
+                        quantity: item.quantity - 1
+                    };
+                }
+                return item;
+            }).filter(item => item.quantity > 0);
+
             const updatedTotalPrice = state.totalPrice - existingItem.price * existingItem.quantity;
             const updatedTotalQuantity = state.totalQuantity - existingItem.quantity;
 
