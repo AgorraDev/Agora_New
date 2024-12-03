@@ -39,30 +39,35 @@ const cartReducer = (state, action) => {
             
         case 'REMOVE_ITEM': {
             const itemId = action.payload;
-            console.log('Logging new Item',itemId.id);
 
             const existingItemIndex = state.items.findIndex(item => item.id === itemId.id);
             const existingItem = state.items[existingItemIndex];
-            console.log('Current items:', state.items);
-            const updatedItems = state.items.map(item => {
-                if (item.id === itemId.id) {
+
+            console.log('Existing Item Quantity', existingItem.quantity);
+            
+            const updatedItems = state.items.map(item => { //maps through cart items
+                if (item.id === itemId.id) { //if cart item.id is equal to removeItem.id
                     return {
-                        ...item,
-                        quantity: item.quantity - 1
+                        ...item, //return matched item...
+                        quantity: item.quantity - 1 //...with one less quantity
+
                     };
                 }
-                return item;
-            }).filter(item => item.quantity > 0);
+                return item; //return updated item
+            }).filter(item => item.quantity > 0); //filter the item if quantity is 0
 
-            const updatedTotalPrice = state.totalPrice - existingItem.price * existingItem.quantity;
-            const updatedTotalQuantity = state.totalQuantity - existingItem.quantity;
+            const updatedTotalQuantity = state.totalQuantity - 1; //removes 1 from totalQuantity
+            const updatedTotalPrice = state.totalPrice - existingItem.price; //updates totalPrice
 
+            //returns cart state with removed items 
             return {
                 ...state,
                 items: updatedItems,
                 totalQuantity: updatedTotalQuantity,
                 totalPrice: updatedTotalPrice,
               };
+   
+
         }
 
         case 'CLEAR_CART':
