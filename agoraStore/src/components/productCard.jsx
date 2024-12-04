@@ -41,16 +41,16 @@ const ProductCard = ({product}) => {
                 quantity: 1,
             }
         });        
-        console.log('Dispatching:', {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            quantity: 1,
-        });
+        // console.log('Dispatching:', {
+        //     id: product.id,
+        //     name: product.name,
+        //     price: product.price,
+        //     quantity: 1,
+        // });
         
     }
 
-console.log(products) //Logs products response for debugging
+// console.log(products) //Logs products response for debugging
     return (
         <>
             {products.length > 0 ? (  // if product length is greater than 0
