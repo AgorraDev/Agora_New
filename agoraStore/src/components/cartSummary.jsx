@@ -1,6 +1,8 @@
 import React from 'react';
 import { useCart } from './cartProvider';
 
+import './cartSummary.css'
+
 const CartSummary = () => {
     const { cartState, dispatch, } = useCart();
 
@@ -22,14 +24,13 @@ const CartSummary = () => {
         
     }
     return (
-        <div>
-            <h2>Cart Summary</h2>
+        <>
             {cartState.items.length > 0 ? (
-                <ul>
+                <ul className='cart-list'>
                 {cartState.items.map((item) => (
                     console.log(item),
                     <li key={item.id}>
-                        {item.name} - ${item.price} x {item.quantity} 
+                        {item.name} | £{item.price} x {item.quantity} = £{(item.price * item.quantity).toFixed(2)}
                         <button className='btn m-3 p-1 btn-sm btn-dark' onClick={() => removeFromCart(item)}>
                             Remove
                         </button>
@@ -39,12 +40,14 @@ const CartSummary = () => {
             ) : (
                 <p>No items in cart...</p>
             )}
+
+
             <p>Total Quantity: {cartState.totalQuantity}</p>
             <p>Total Price: ${cartState.totalPrice.toFixed(2)}</p>
             <button className='btn p-2 btn btn-dark' onClick={() => clearCart(cartState)}>
-                Clear
+                Clear Cart
             </button>
-        </div>
+    </>
     );
 };
 

@@ -1,9 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import '../style/home.css';
-import React, { useState, useEffect} from 'react';
 import Navigation from '../components/nav';
-import axios from 'axios';
 import Footer from '../components/footer';
+import Profile from '../components/profile';
 
 
 function Home() {
@@ -11,9 +10,9 @@ function Home() {
     return (
         <>
            {/*Bootstrap link*/}
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"crossorigin="anonymous"/>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"crossOrigin="anonymous"/>
            {/*Links End*/}
-        <Navigation />
+
         <Container fluid className="hero-bg d-flex" load="lazy">
                   <div className="container col-xxl-12 px-3"> 
                   <div className="row g-3 py-5 ">

@@ -1,3 +1,4 @@
+
 #brand {
     color: rgb(199, 88, 88);
     font-size: 1.75em;
@@ -18,7 +19,14 @@
     text-decoration: underline;
 }
 
-
+.cart-svg {
+    display:flex;
+    position: relative;
+    bottom: 10px;
+    left: 30px;
+    fill: rgb(192, 60, 60);
+    
+}
 @media screen and (max-width: 768px) {
     
 }
