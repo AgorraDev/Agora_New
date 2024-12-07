@@ -16,9 +16,9 @@ function Footer() {
                     <div className='col-4 me-auto'>
                         <div className='row justify-content-center'>Socials</div>
                         <div className='row justify-content-center'>
-                            <a className='col-1' href='/home'>Insta</a>
-                            <a className='col-1' href='/home'>Insta</a>
-                            <a className='col-1' href='/home'>Youtube</a>
+                            <a className='col-4' href='/home'>Instagram</a>
+                            <a className='col-4' href='/home'>Facebook</a>
+                            <a className='col-4' href='/home'>Youtube</a>
                         </div>
                     </div>
                     <div className='col-4 me-auto'></div>

@@ -12,7 +12,7 @@
     left: 0.5%;
     color: rgb(245, 245, 245);
     background-color:rgba(0, 0, 0, 0.85);
-    border-radius: 4%/15%;
+    border-radius: 10px;
 }
 .hero2-bg {
     position: relative;
@@ -27,5 +27,11 @@
     left: 0.5%;
     color: rgb(14, 14, 14);
     background-color:rgb(248, 248, 248, 0.85);
-    border-radius: 4%/15%;
+    border-radius: 10px;
+}
+@media (max-width: 576px) {
+    .hero-content, .hero2-content {
+        bottom: 0;
+        border-radius: 0;
+    }
 }

@@ -9,7 +9,7 @@ import './nav.css';
 function Navigation() {
     const { cartState } = useCart();
     const [showCart, setShowCart] = useState(false);
-    const { loginWithRedirect, logout } = useAuth0();
+    const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
     const handleToggleCart = () => {
         setShowCart(!showCart);
@@ -32,14 +32,18 @@ function Navigation() {
                     </Nav>
                         {/* <Navbar.Brand id='brand' className='me-auto'>AGORA</Navbar.Brand> */}
                         <Nav id="links">
-                            <Nav.Link onClick={() => handleLogin()}>Login</Nav.Link>
-                            <Nav.Link onClick={() => logout({logoutParams: {returnTo: window.location.origin } })}>Logout</Nav.Link>
-                            <Nav.Link className='d-flex' onClick={() => handleToggleCart()}>
-                                {cartState.items.length > 0 ? (
-                                    <span>Cart <svg className="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 125 125'><circle cx={15} cy={15} r={15} /> </svg> </span>
-                                )    :  (   <span>Cart</span>
-                        )}
-                            </Nav.Link>
+                            {!isAuthenticated ? (
+                                <Nav.Link onClick={() => handleLogin()}>Login</Nav.Link>
+                            ) : (
+                                <Nav.Link href='/profile'>Account</Nav.Link>
+                            )}
+                        <Nav.Link className='d-flex' onClick={() => handleToggleCart()}>
+                            {cartState.items.length > 0 ? (
+                                <span>Cart <svg className="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 125 125'><circle cx={15} cy={15} r={15} /> </svg> </span>
+                            ) : (
+                                <span>Cart</span>
+                            )}
+                        </Nav.Link>
                             
                     </Nav>
                 </Container>

@@ -9,6 +9,7 @@ import Home from './pages/home';
 import Products from './pages/products';
 import About from './pages/about';
 import Navigation from './components/nav';
+import Profile from './pages/profile';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/' element={<Home /> } />
         <Route path='/products' element={<Products />} />
         <Route path='/about-us' element={<About />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </Router>
     </CartProvider>
