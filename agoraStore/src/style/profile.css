@@ -1,4 +1,10 @@
-.page {
-    width: 100vw;
+#profile-wrapper {
     height: 100vh;
+    padding: 5em 3em ;
+}
+
+.section-render {
+    display: flex;
+    height: 10em;
+    width: 24em;
 }

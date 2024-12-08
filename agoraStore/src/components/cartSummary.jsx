@@ -28,7 +28,7 @@ const CartSummary = () => {
             {cartState.items.length > 0 ? (
                 <ul className='cart-list'>
                 {cartState.items.map((item) => (
-                    console.log(item),
+                    console.log('Logging Cart Item:', item),
                     <li key={item.id}>
                         {item.name} | £{item.price} x {item.quantity} = £{(item.price * item.quantity).toFixed(2)}
                         <button className='btn m-3 p-1 btn-sm btn-dark' onClick={() => removeFromCart(item)}>

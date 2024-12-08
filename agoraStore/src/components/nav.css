@@ -4,7 +4,7 @@
     font-size: 1.75em;
     font-weight: bolder;
 }
-#links{
+.links{
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -14,9 +14,34 @@
     color: rgb(24, 24, 24);
     font-family: monospace;
 }
-#links :hover {
-    color: black;
-    text-decoration: underline;
+.links :hover {
+    color: rgb(0, 0, 0);
+    
+}
+
+#nav-account-dropdown {
+    display: block;
+    padding: 4px;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    margin-bottom: 0;
+
+    color: rgb(24, 24, 24);
+    font-family: monospace;
+}
+
+.account-dropdown-content {
+    display: none;
+    position: absolute;
+    border-radius: 0 0 8px 8px;
+    right: 12px;
+    background-color: rgb(245, 245, 245);
+    min-width: 112px;
+
+}
+#nav-account-dropdown:hover .account-dropdown-content {
+    display: block;
 }
 
 .cart-svg {

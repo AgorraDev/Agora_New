@@ -1,5 +1,4 @@
 import {Button, Container, Nav, Navbar, NavDropdown, Modal} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState, useEffect} from 'react';
 import { useCart } from './cartProvider';
@@ -25,17 +24,24 @@ function Navigation() {
         <Container fluid>
             <Navbar className='fixed-top bg-transparent'>
                 <Container fluid className='d-flex justify-content-between'>
-                    <Nav id="links" className='me-auto'>
+                    <Nav className='links me-auto'>
                         <Nav.Link  href='/' >Home</Nav.Link>
                         <Nav.Link  href='/products'>Store</Nav.Link>
                         <Nav.Link  href='/about-us'>About</Nav.Link>
                     </Nav>
                         {/* <Navbar.Brand id='brand' className='me-auto'>AGORA</Navbar.Brand> */}
-                        <Nav id="links">
+                        <Nav id="links" className='links'>
                             {!isAuthenticated ? (
                                 <Nav.Link onClick={() => handleLogin()}>Login</Nav.Link>
                             ) : (
-                                <Nav.Link href='/profile'>Account</Nav.Link>
+                                <div id='nav-account-dropdown'> {user.nickname}
+                                    <div className='account-dropdown-content'>
+                                        <Nav.Link className='pt-2 pb-0' href='/profile'>Account</Nav.Link>
+                                        <Nav.Link className='py-0' href='/profile' >Orders</Nav.Link>
+                                        <Nav.Link className='pt-0 pb-2' onClick={() => logout({logoutParams: {returnTo: window.location.origin}})}> Logout </Nav.Link>
+                                    </div>
+                                </div>
+
                             )}
                         <Nav.Link className='d-flex' onClick={() => handleToggleCart()}>
                             {cartState.items.length > 0 ? (
