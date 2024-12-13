@@ -1,10 +1,21 @@
 #profile-wrapper {
     height: 100vh;
     padding: 5em 3em ;
+
+ 
 }
 
 .section-render {
     display: flex;
     height: 10em;
-    width: 24em;
+    width: auto;
+    padding: .5em 1em;
+}
+
+.section-label {
+    font-weight: bold;
+    padding-right: 1em;
+}
+.section-text {
+    font-weight: lighter;
 }

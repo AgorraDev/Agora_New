@@ -49,10 +49,8 @@ const Profile = () => {
             isAuthenticated && (
                 <>
                 <div id="profile-wrapper">
-                <div>
-                    <img src={user.picture} alt={user.name} />
-                    <h2>{user.nickname}</h2>
-                </div>
+                <div className="border rounded shadow-sm mb-2 p-2"> 
+                    <img src={user.picture} alt={user.name} className="pb-2"/>
                 <nav>
                     {sections.map((item) => (
                         <button key={item.section} onClick={() => setActiveSection(item.section)} className="btn btn-dark">
@@ -60,8 +58,9 @@ const Profile = () => {
                         </button>
                     ))}
                 </nav>
+                </div>
                 
-                <div className="section-render">
+                <div className="section-render border rounded shadow-sm h-auto">
                     {renderSection()}
                 </div>
                 </div>
@@ -73,11 +72,14 @@ const Profile = () => {
 
     const ProfileSection = ({ user }) => {
         return (
-        <div>
-             <div>
-                <label>Account Name</label>
+        <div className="d-flex flex-column">
+            <h3>Account Information</h3>
+             <div className="border rounded shadow-sm m-1 p-1">
+                <label className="section-label">Username</label>
                 <p>{user.nickname}</p>
-                <label>Email</label>
+            </div>
+            <div className="border rounded shadow-sm m-1 p-1">
+                <label className="section-label">Email</label>
                  <p>{user.email}</p>
              </div>
          </div>
@@ -100,7 +102,7 @@ const Profile = () => {
         
         return (
         <div>
-            <label>Orders</label>
+            <label className="section-label">Orders</label>
             {mockOrders.length < 1 ? (
                 <ul>
                 {orders.map((order) => {
@@ -120,8 +122,19 @@ const Profile = () => {
      }
      const AccountSettingsSection = () => {
         return (
-        <div>
-            <label>Settings</label>         
+        <div className="d-flex flex-column">
+            <div className="border rounded shadow-sm m-1 p-2">
+               <label className="section-label">
+               <p className="section-text">Account Settings</p>
+               </label>
+               <button className="btn btn-dark btn-sm">Edit</button>
+           </div>
+           <div className="border rounded shadow-sm m-1 p-2">
+               <label className="section-label">
+               <p className="section-text">Payment Settings</p>
+               </label>
+               <button className="btn btn-dark btn-sm">Edit</button>
+           </div>
         </div>
         )    
     }
