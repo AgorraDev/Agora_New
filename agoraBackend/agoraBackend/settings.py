@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--q9l4vhyv92uh7qpkku%@g9-$)(fb#e*di*0-!vb!zn7-5m!*-'
+SECRET_KEY = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -130,7 +130,6 @@ CORS_ALLOW_ALL_ORIGINS = True #Development only!!
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',  # React development server
     'http://127.0.0.1:8000',
-    'https://agora-new-three.vercel.app/',
     'https://agora-new-git-databaseintergration0001-agorradevs-projects.vercel.app'
     
 ]
