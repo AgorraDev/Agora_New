@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import axios from'axios';
+import axios from 'axios';
 import './productCard.css';
 import { Card, CardBody, CardText, CardTitle, CardImg, CardLink } from 'react-bootstrap'
 import { useCart } from './cartProvider';
@@ -8,27 +8,26 @@ const ProductCard = ({product}) => {
     const { dispatch } = useCart();
     
     // Mock data test - used for testing - replace with useEffect when backend is runnning
-    const mockProducts = [
-        { id: 1, name: "Product 1", price: "19.99"},
-        { id: 2, name: "Product 2", price: "9.99"},
-        { id: 3, name: "Product 3", price: "14.99"},
-        { id: 4, name: "Product 4", price: "49.99"},
-        /* Add more product objects as needed*/
-    ];
+    // const mockProducts = [
+    //     { id: 1, name: "Product 1", price: "19.99"},
+    //     { id: 2, name: "Product 2", price: "9.99"},
+    //     { id: 3, name: "Product 3", price: "14.99"},
+    //     { id: 4, name: "Product 4", price: "49.99"},
+    //     /* Add more product objects as needed*/
+    // ];
 
-    const [products, setProducts] = useState(mockProducts); //sets new useState variable 'products' as empty array
+    const [products, setProducts] = useState([]); //sets new useState variable 'products' as empty array
 
-//     useEffect(() => {
-    //     axios.get('http://localhost:8000//warehouse/products') // HTTP for back-end (Django) endpoint - Accessing data for products
-    //     .then(res => {              
-    //         console.log(res.data); //Logs the data response (to help catch errors whilst building)
-    //         setProducts(res.data); //updates 'products' state to response.data from backend endpoint
-
-    //     })
-    //     .catch(err => {
-    //         console.error(err); //Logs error if thrown
-    //     });
-    // }, []);
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/products/' || '/api/products') // HTTP for back-end (Django) endpoint - Accessing data for products
+        .then(response => {              
+            console.log(response.data); //Logs the data response (to help catch errors whilst building)
+            setProducts(response.data); //updates 'products' state to response.data from backend endpoint
+        })
+        .catch(err => {
+            console.error(err); //Logs error if thrown
+        });
+    }, []);
 
     const addToCart = (product) => {
         dispatch({
@@ -49,7 +48,7 @@ const ProductCard = ({product}) => {
         
     }
 
-    console.log('Logging products', products) //Logs products response for debugging
+    console.log('Logging products', products.type) //Logs products response for debugging
     return (
         <>
             {products.length > 0 ? (  // if product length is greater than 0
