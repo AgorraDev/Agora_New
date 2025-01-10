@@ -32,7 +32,7 @@ const ProductCard = ({product}) => {
     // }, []);
 
         useEffect(() => {
-            const getProducts = () => {
+            async function getProducts () {
                 const { data: products } = await supabase.from('Products').select()
 
                 if (products.length > 1) {
