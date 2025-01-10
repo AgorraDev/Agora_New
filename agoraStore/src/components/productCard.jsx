@@ -3,6 +3,8 @@ import axios from 'axios';
 import './productCard.css';
 import { Card, CardBody, CardText, CardTitle, CardImg, CardLink } from 'react-bootstrap'
 import { useCart } from './cartProvider';
+import { supabase } from '../utils/supabase'
+
 
 const ProductCard = ({product}) => {
     const { dispatch } = useCart();
@@ -18,16 +20,27 @@ const ProductCard = ({product}) => {
 
     const [products, setProducts] = useState([]); //sets new useState variable 'products' as empty array
 
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/products/' || '/api/products') // HTTP for back-end (Django) endpoint - Accessing data for products
-        .then(response => {              
-            console.log(response.data); //Logs the data response (to help catch errors whilst building)
-            setProducts(response.data); //updates 'products' state to response.data from backend endpoint
-        })
-        .catch(err => {
-            console.error(err); //Logs error if thrown
-        });
-    }, []);
+    // useEffect(() => {
+    //     axios.get('http://127.0.0.1:8000/api/products/' || '/api/products') // HTTP for back-end (Django) endpoint - Accessing data for products
+    //     .then(response => {              
+    //         console.log(response.data); //Logs the data response (to help catch errors whilst building)
+    //         setProducts(response.data); //updates 'products' state to response.data from backend endpoint
+    //     })
+    //     .catch(err => {
+    //         console.error(err); //Logs error if thrown
+    //     });
+    // }, []);
+
+        useEffect(() => {
+            const getProducts = () => {
+                const { data: products } = await supabase.from('Products').select()
+
+                if (products.length > 1) {
+                    setProducts(products)
+                }
+            }
+            getProducts()
+        }, [])
 
     const addToCart = (product) => {
         dispatch({
